@@ -1,4 +1,4 @@
-package com.example.util.service;
+package com.threedsoft.util.service;
 
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHeaders;
@@ -7,7 +7,7 @@ import org.springframework.messaging.support.MessageHeaderAccessor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MimeTypeUtils;
 
-import com.example.util.dto.events.BaseEvent;
+import com.threedsoft.util.dto.events.WMSEvent;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +20,7 @@ public class EventPublisher {
 	        this.messageChannel = messageChannel;
 	    }
 
-	public void publish(BaseEvent event) {
+	public void publish(WMSEvent event) {
 		log.info("Sending event {}", event);
 		MessageHeaderAccessor msgHdrAccessor = new MessageHeaderAccessor();
 		msgHdrAccessor.copyHeadersIfAbsent(event.getHeaderMap());

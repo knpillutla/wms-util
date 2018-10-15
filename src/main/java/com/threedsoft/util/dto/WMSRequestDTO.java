@@ -1,6 +1,9 @@
-package com.example.util.dto.events;
+package com.threedsoft.util.dto;
 
-import com.example.util.dto.BaseDTO;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -12,9 +15,5 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @NoArgsConstructor
 @Data
-public class BaseEvent extends BaseDTO{
-	public String eventName;
-	public BaseEvent(String name) {
-		eventName = name;
-	}
+public class WMSRequestDTO  implements Serializable{
 }

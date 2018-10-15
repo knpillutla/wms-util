@@ -1,4 +1,4 @@
-package com.example.util.dto;
+package com.threedsoft.util.dto;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -15,10 +15,5 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @NoArgsConstructor
 @Data
-public class BaseDTO  implements Serializable{
-	public Map<String, Object> headerMap = new HashMap();
-	
-	public void addHeader(String key, Object value) {
-		headerMap.put(key, value);	
-	}
+public class WMSResourceDTO  implements Serializable{
 }
