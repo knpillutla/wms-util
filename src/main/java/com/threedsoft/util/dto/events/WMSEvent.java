@@ -5,9 +5,15 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,7 +40,11 @@ public class WMSEvent<T> implements Serializable{
 	public boolean isFailed = false;
 	public String serviceName;
 	public Map headerMap = new HashMap();
-	public LocalDateTime createdDttm = LocalDateTime.now();
+	
+   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+   @JsonSerialize(using = LocalDateTimeSerializer.class)
+   @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	public LocalDateTime createdDttm;
 
 	public WMSEvent(String eventName, String busName, Integer locnNbr, String company, String division, String busUnit, String busKey, String busVal, String serviceName) {
 		this(eventName, busName, locnNbr, company, division, busUnit, busKey, busVal, null, null, serviceName, null);

@@ -1,5 +1,7 @@
 package com.threedsoft.util.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.MessageBuilder;
@@ -21,6 +23,7 @@ public class EventPublisher {
 	    }
 
 	public void publish(WMSEvent event) {
+		event.setCreatedDttm(LocalDateTime.now());
 		log.info("Sending event {}", event);
 		MessageHeaderAccessor msgHdrAccessor = new MessageHeaderAccessor();
 		msgHdrAccessor.copyHeadersIfAbsent(event.getHeaderMap());
